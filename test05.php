@@ -37,7 +37,7 @@ class FooTest extends PHPUnit_Framework_TestCase
 }
 
 // STEPS
-// 1. Odkomentowac someoperations w metodzie change
+// 1. Odkomentowac someoperations w metodzie change i odpalic kilka razy test
 // PODOBNE:
 // - wyniki z bazy bez sortowania - czasem przechodza czasem nie
 // - sortowanie po czasie - czasem dziala, a czasem kilka wynikow ma ten sam czas i moze inaczej posortowac
