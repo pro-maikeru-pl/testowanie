@@ -1,23 +1,32 @@
 <?php
+class DatabaseConnection
+{
+  public function getResult()
+  {
+    // sleep(2); // (1)
+    // return 'no results'; // (2)
+    return 'db result';
+  }
+}
+class Dependency
+{
+  public function decorate($what)
+  {
+    // $decorations = '*** '; return $decorations . $what . $decorations; // (3)
+    return '*** ' . $what . ' ***';
+  }
+}
 class Foo {
-  public function doSomethingFunny()
+  private $db;
+  private $someDependency;
+  public function __construct()
   {
-    // some stuff
-    return $this->doSomething() . 'funny';
+    $this->db = new DatabaseConnection();
+    $this->someDependency = new Dependency();
   }
-  public function doSomethingElse()
+  public function getResult()
   {
-    // some stuff
-    return $this->doSomething() . 'else';
-  }
-  public function doSomethingDifferent()
-  {
-    // some stuff
-    return $this->doSomething() . 'different';
-  }
-  private function doSomething()
-  {
-    return 'something ';
+    return $this->someDependency->decorate($this->db->getResult());
   }
 }
 
@@ -28,40 +37,16 @@ class FooTest extends PHPUnit_Framework_TestCase
   *
   * @test
   */
-  public function somethingDifferent_someConfigurationDone_shouldReturnSomethingDifferent()
+  public function someTest1()
   {
-    $foo = $this->creator_configuredFoo();
-    $this->assertEquals('something different', $foo->doSomethingDifferent());
+    $foo = new Foo();
+    $this->assertEquals('*** db result ***', $foo->getResult());
   }
-  /**
-  * Some test.
-  *
-  * @test
-  */
-  public function somethingFunny_someConfigurationDone_shouldReturnSomethingFunny()
-  {
-    $foo = $this->creator_configuredFoo();
-    $this->assertEquals('something funny', $foo->doSomethingFunny());
-  }
-  /**
-  * Some test.
-  *
-  * @test
-  */
-  public function somethingElse_someConfigurationDone_shouldReturnSomethingElse()
-  {
-    $foo = $this->creator_configuredFoo();
-    $this->assertEquals('something else', $foo->doSomethingElse());
-  }
-  private function creator_configuredFoo()
-  {
-    $foo = new Foo(); 
-    // some configuration ...
-    return $foo;
-  }
+  
 }
 
 // STEPS
-// 1. pokaz, ze zamiast robic kilka asercji tak naprawde trzeba bylo zrobic refaktoryzacje testow
-// 2. usun spacje po something w dosomething
-// 3. odpal test i zobacz ze wszystkie kilka nie przeszlo - co daje wskazowke ze moze byc wspolny problem
+// 1. zwolnij baze danych (1)
+// 2. zmodyfikuj rezultat bazy danych (2)
+// 3. wprowadz buga do decorate
+// 4. pogadaj jak mozna temu przeciwdzialac
