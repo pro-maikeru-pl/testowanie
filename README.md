@@ -1,6 +1,7 @@
 Co dobry developer o testowaniu wiedzieć powinien
 ==========
 ## Jak korzystać z materiałów
+Materiały: https://github.com/pro-maikeru-pl/testowanie
 
 1. Otworzyć prezentację - plik prezentacja.pdf lub prezentacja.pptx
 2. Sciągnąć i rozpakować zawartość repozytorium (przycisk zip u góry), lub sklonować do siebie. Do odpalania przykładów wymagany jest zainstalowany PHPUnit (http://www.phpunit.de/manual/current/en/installation.html) . Przykłady w kodzie źródłowym na końcu zawierają kroki które po należy odtworzyć aby zrozumieć o co chodzi.
