@@ -47,4 +47,3 @@ class BankAccountTest extends PHPUnit_Framework_TestCase
 
 // STEPS:
 // 1. ./pu BankAccountTest.php
-// 2. http://192.168.1.106/prezentacja/build/coverage/BankAccount.php.html
